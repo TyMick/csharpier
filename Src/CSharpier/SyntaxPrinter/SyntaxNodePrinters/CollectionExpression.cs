@@ -2,6 +2,35 @@ namespace CSharpier.SyntaxPrinter.SyntaxNodePrinters;
 
 internal static class CollectionExpression
 {
+    /*
+     I think this has more to do with the long field name, which causes the break + indent. Changing anything in this class seems to break one of the first two test cases
+     so this fix may need to happen in the field instead
+
+    string[] c =
+    [
+        "________________________",
+        "________________________",
+        "________________________",
+        "________________________",
+    ];
+
+    public class ClassName
+    {
+        SomeType[] ShortName =
+        [
+            someLongValue___________________________________________________,
+            someLongValue___________________________________________________,
+        ];
+
+        SomeType[] LongName____________________________________________________________________________ =
+
+            [
+                someLongValue___________________________________________________,
+                someLongValue___________________________________________________,
+            ];
+    }
+     */
+    
     public static Doc Print(CollectionExpressionSyntax node, FormattingContext context)
     {
         Doc separator = node.Parent
